@@ -24,4 +24,4 @@ class BloomFilter:
     
     #To check an item in the Bloom filter
     def check(self, item):
-        pass
+        return all(self.bit_array[index] for index in self.hashes(item))

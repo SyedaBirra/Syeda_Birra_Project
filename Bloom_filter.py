@@ -1,4 +1,3 @@
-import mmh3
 import math
 import bitarray
 import random
@@ -20,7 +19,8 @@ class BloomFilter:
     #To add an item to BloomFilter
     def add(self, item):
         
-        pass
+        for index in self.hashes(item):
+            self.bit_array[index]=True
     
     #To check an item in the Bloom filter
     def check(self, item):

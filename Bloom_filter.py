@@ -25,3 +25,33 @@ class BloomFilter:
     #To check an item in the Bloom filter
     def check(self, item):
         return all(self.bit_array[index] for index in self.hashes(item))
+    
+    
+    
+# EXAMPLE USAGE
+
+if __name__ == "__main__":
+    n_items = 100  # Expected number of items
+    hash_count = 3  # Number of hash functions
+    
+    # Initialize Bloom filter
+    bloom_filter = BloomFilter(n=n_items, hash_count=hash_count)
+    
+    # Add some items
+    items_to_add = ["Syeda", "Birra", "Zainab", "Sherazi", "Alex"]
+    for item in items_to_add:
+        bloom_filter.add(item)
+    
+    # Check for items
+    items_to_check = ["Syeda", "Birra", "Zainab", "Sherazi", "Alex", "Becky"]
+    for item in items_to_check:
+        result = bloom_filter.check(item)
+        print(f"{item} is {'Possibly in bloom filter' if result else 'Definitely not in bloom filter'}")
+
+
+
+
+
+
+
+

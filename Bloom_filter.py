@@ -15,7 +15,7 @@ class BloomFilter:
     
     def hashes(self,item):
         #Generating multiple hash values
-        pass
+        return [(hash(item)+seed)%self.size for seed in self.seeds]
     
     #To add an item to BloomFilter
     def add(self, item):

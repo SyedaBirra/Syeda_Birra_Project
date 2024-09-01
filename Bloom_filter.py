@@ -41,12 +41,13 @@ if __name__ == "__main__":
     items_adding=["Syeda","Birra","Zainab","Sherazi","Alex"]
     for item in items_adding:
         bloom_filter.add(item)
-    # Checking items
+    # Checking itemss
     items_checking=["Syeda","Birra","Zainab","Sherazi","Alex","Becky"]
     for item in items_checking:
         result=bloom_filter.check(item)
         print(f"{item} is {'possibly in bloom filter'if result else 'definitely not in bloom filter'}")
 
+#Testing
 
 
 

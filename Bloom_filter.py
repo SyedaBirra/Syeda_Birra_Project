@@ -50,6 +50,40 @@ if __name__ == "__main__":
 #Testing
 
 
+bloomfilter=BloomFilter(n=1000,hash_count=5)
+
+
+words_to_insert=["horse","comb","snake","letter","book","flag", "egg", "bell","shop","shoe"]
+
+# Insert words into the Bloom filter
+for word in words_to_insert:
+    bloomfilter.add(word)
+
+unique_words=set(words_to_insert)
+
+# Verify that all inserted words are found in the Bloom filter
+for word in unique_words:
+    assert bloomfilter.check(word),f'{word} not found in Bloom filter.'
+
+
+words_not_inserted = ["nose","tree","bee","rarin","fire","bath","ice","vote", "car", "cat"]
+
+# Check that words not inserted are not found in the Bloom filter
+for word in words_not_inserted:
+    if bloomfilter.check(word):
+        print(f"False positive detected for {word}")
+    else:
+        print(f"{word} correctly identified as not present in Bloom filter.")
+
+# Additional check: Ensure that all words in unique_words are  found
+all_checked_words=[word for word in unique_words if bloomfilter.check(word)]
+assert len(all_checked_words) == len(unique_words), \
+       f'{len(all_checked_words)} words found, expected {len(unique_words)}'
+
+
+
+
+
 
 
 
